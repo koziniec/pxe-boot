@@ -66,7 +66,36 @@ swapon /dev/sda2
 # mount /dev/sda3 /mnt
 
 
-# pacstrap -K /mnt base linux linux-firmware nano
+# pacstrap -K /mnt base linux linux-firmware nano networkmanager 
+
+
+
+nano /etc/hostname
+schit-lab-deploy
+
+**Revert to traditional interface names
+If you would prefer to retain traditional interface names such as eth0, Predictable Network Interface Names can be disabled by masking the udev rule:**
+
+# ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+Alternatively, add net.ifnames=0 to the kernel parameters.
+
+CONSIDER DOING THIS AS AN OPTIMISATION
+Set device MTU and queue length
+You can change the device MTU and queue length by defining manually with an udev-rule. For example:
+
+/etc/udev/rules.d/10-network.rules
+ACTION=="add", SUBSYSTEM=="net", KERNEL=="wl*", ATTR{mtu}="1500", ATTR{tx_queue_len}="2000"
+
+
+nano /etc/hosts
+127.0.0.1        localhost
+::1              localhost
+127.0.1.1        schit-lab-deploy
+
+
+# genfstab -U /mnt >> /mnt/etc/fstab
+
+ln -sf /usr/share/zoneinfo/Australia/Perth /etc/localtime
 
 - DOCUMENT whatever this is and how to rebuild and configure it.
     - Seriously without documentation, in time any functionality will turn to rust.
