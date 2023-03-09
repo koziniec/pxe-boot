@@ -1,5 +1,5 @@
 ---
-title: Lab Exercise
+title: PXE Lab Deployment System
 tags: 
  - lab
  - eve
@@ -8,7 +8,7 @@ tags:
 description: Lab exercise and steps
 ---
 
-# Lab Title
+# PXE Lab Deployment System
 A brief description of the lab.
 
 ## Overview
