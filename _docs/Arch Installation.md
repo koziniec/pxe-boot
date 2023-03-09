@@ -95,7 +95,47 @@ nano /etc/hosts
 
 # genfstab -U /mnt >> /mnt/etc/fstab
 
+arch-chroot /mnt
+
+
+
 ln -sf /usr/share/zoneinfo/Australia/Perth /etc/localtime
+
+
+hwclock --systohc
+
+
+nano /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. 
+en_US.UTF-8 UTF-8
+en_AU.UTF-8 UTF-8
+
+Generate the locales by running:
+locale-gen
+
+
+nano /etc/locale.conf
+LANG=en_AU.UTF-8
+
+
+set passwd
+passwd  (old hp password from research room)
+
+pacman -Syu
+
+GRUB
+pacman -S grub efibootmgr
+mkdir /boot/efi
+mount /dev/sda1 /boot/efi
+grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+
+
+
+
+
 
 - DOCUMENT whatever this is and how to rebuild and configure it.
     - Seriously without documentation, in time any functionality will turn to rust.
