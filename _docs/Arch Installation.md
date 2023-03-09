@@ -7,8 +7,67 @@ description: Basic Arch OS configuration
 ---
 # PXE Booting lab OS image deployment system
 An early work in progress and essentially a collection of progress notes
+Bridge the VM Net
 
-## Goals 
+
+## Install Arch
+Verify the boot mode
+To verify the boot mode, list the efivars directory:
+
+# ls /sys/firmware/efi/efivars
+
+
+
+
+Connect to the internet
+To set up a network connection in the live environment, go through the following steps:
+
+Ensure your network interface is listed and enabled, for example with ip-link(8):
+# ip link
+
+
+
+
+get address
+**dhcpcd
+
+
+Use timedatectl(1) to ensure the system clock is accurate:
+# timedatectl status
+
+what is the drive ID?   
+fdisk -l  
+Documentation assumes /dev/sda
+
+
+# fdisk /dev/the_disk_to_be_partitioned
+# fdisk /dev/sda   <--- assumption
+
+
+Create
+/mnt/boot  /dev/sda1   EFI System partition (fdisk type "ef")  1 GB  
+[SWAP]     /dev/sda2   Linux Swap  (fdisk type "82")  16 GB
+/mnt       /dev/sda3   Linux x86-64 root (/)  Remainder of device
+
+Make the boot partition bootable.
+
+write the partition (w)
+
+Make File Systems
+
+mkfs.fat -F 32 /dev/sda1
+mkswap /dev/sda2
+mkfs.ext4 /dev/sda3
+
+mount volumes
+
+# mount --mkdir /dev/sda1 /mnt/boot
+swapon /dev/sda2
+# mount /dev/sda3 /mnt
+
+
+# pacstrap -K /mnt base linux linux-firmware nano
+
 - DOCUMENT whatever this is and how to rebuild and configure it.
     - Seriously without documentation, in time any functionality will turn to rust.
 - A Virtual Box, Arch Linux server VM to support lab deployment.
