@@ -7,15 +7,14 @@ description: Basic Arch OS configuration
 ---
 # Building a basic CLI Arch install as a base for the PXE server.
 Bridge the VM Net
-
+Enable EFI boot
 
 ## Install Arch
-Verify the boot mode
-To verify the boot mode, list the efivars directory:
+Verify the boot mode supports EFI
 <pre>
 ls /sys/firmware/efi/efivars
 </pre>
-
+You should see files listed if EFI is functional.
 
 
 Connect to the internet
