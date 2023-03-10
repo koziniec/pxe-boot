@@ -6,8 +6,9 @@ tags:
 description: Basic Arch OS configuration
 ---
 # Building a basic CLI Arch install as a base for the PXE server.
-Bridge the VM Net
-Enable EFI boot
+* Allocate a volume with enough space to hold several images
+* Bridge the VM Net
+* Enable EFI boot
 
 ## Install Arch
 Verify the boot mode supports EFI
