@@ -37,7 +37,7 @@ dhcpcd
 # timedatectl status
 </pre>
 
-## Configure volumens
+## Configure volumes
 ### Determine drive ID
 <pre>
 fdisk -l
@@ -78,15 +78,18 @@ mount /dev/sda3 /mnt
 pacstrap -K /mnt base linux linux-firmware nano networkmanager 
 </pre>
 
-
+## Set hostname
+<pre>
 nano /etc/hostname
 schit-lab-deploy
+</pre>
 
-**Revert to traditional interface names
+## Revert networks to traditional interface names
 If you would prefer to retain traditional interface names such as eth0, Predictable Network Interface Names can be disabled by masking the udev rule:**
+<pre>
+ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
+</pre>
 
-# ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
-Alternatively, add net.ifnames=0 to the kernel parameters.
 
 CONSIDER DOING THIS AS AN OPTIMISATION
 Set device MTU and queue length
