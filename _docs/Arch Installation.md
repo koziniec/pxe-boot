@@ -49,7 +49,7 @@ Documentation from here on assumes /dev/sda (substitute as necessary)
 fdisk /dev/sda
 </pre>
 
-Create the following within fdisk
+Create the following partitions within fdisk:
 <pre>
 /mnt/boot  /dev/sda1   EFI System partition (fdisk type "ef")  1 GB  
 [SWAP]     /dev/sda2   Linux Swap  (fdisk type "82")  16 GB
@@ -67,14 +67,16 @@ mkfs.ext4 /dev/sda3
 </pre>
 
 ### Mount volumes
-</pre>
+<pre>
 mount --mkdir /dev/sda1 /mnt/boot
 swapon /dev/sda2
 mount /dev/sda3 /mnt
 </pre>
 
-# pacstrap -K /mnt base linux linux-firmware nano networkmanager 
-
+## Install Arch
+<pre>
+pacstrap -K /mnt base linux linux-firmware nano networkmanager 
+</pre>
 
 
 nano /etc/hostname
