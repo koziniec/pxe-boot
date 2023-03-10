@@ -98,54 +98,74 @@ You can change the device MTU and queue length by defining manually with an udev
 /etc/udev/rules.d/10-network.rules
 ACTION=="add", SUBSYSTEM=="net", KERNEL=="wl*", ATTR{mtu}="1500", ATTR{tx_queue_len}="2000"
 
-
+## Create hosts file
+<pre>
 nano /etc/hosts
 127.0.0.1        localhost
 ::1              localhost
 127.0.1.1        schit-lab-deploy
+</pre>
 
+## Generate fstab
+<pre>
+genfstab -U /mnt >> /mnt/etc/fstab
+</pre>
 
-# genfstab -U /mnt >> /mnt/etc/fstab
-
+## Switch to chroot
+<pre>
 arch-chroot /mnt
+</pre>
 
-
-
+## Set timezone
+<pre>
 ln -sf /usr/share/zoneinfo/Australia/Perth /etc/localtime
+</pre>
 
-
+## Set the correct time on the hardware clock (probably meaningless in a VM)
+<pre>
 hwclock --systohc
+</pre>
 
+## Set the locales
+<pre>
+nano /etc/locale.gen 
+(uncomment en_US.UTF-8 UTF-8 and other needed locales)
+</pre>
 
-nano /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed locales. 
+<pre>
 en_US.UTF-8 UTF-8
 en_AU.UTF-8 UTF-8
+</pre>
 
-Generate the locales by running:
+## Generate the locales
+<pre>
 locale-gen
+</pre>
 
-
+<pre>
 nano /etc/locale.conf
+</pre>
 LANG=en_AU.UTF-8
 
+##Set root password
+<pre>
+passwd  
+(old hp password from research room)
+</pre>
 
-set passwd
-passwd  (old hp password from research room)
-
+## Update Arch
+<pre>
 pacman -Syu
+</pre>
 
-GRUB
+## Install GRUB
+<pre>
 pacman -S grub efibootmgr
 mkdir /boot/efi
 mount /dev/sda1 /boot/efi
 grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
-
-
-
-
-
-
+</pre>
 
 
 
