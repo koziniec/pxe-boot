@@ -8,9 +8,9 @@ description: Basic Arch OS configuration
 # Building a basic CLI Arch install as a base for the PXE server.
 * Download Arch ISO
 * Create VM
-** Allocate a volume with enough space to hold several images
-** Bridge the VM Net
-** Enable EFI boot
+ * Allocate a volume with enough space to hold several images
+ * Bridge the VM Net
+ * Enable EFI boot
 
 Boot into Arch installation media
 
