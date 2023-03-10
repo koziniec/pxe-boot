@@ -32,28 +32,34 @@ ip link
 dhcpcd
 </pre>
 
-Use timedatectl(1) to ensure the system clock is accurate:
+## Check clock
+<pre>
 # timedatectl status
+</pre>
 
-what is the drive ID?   
-fdisk -l  
-Documentation assumes /dev/sda
+## Configure volumens
+### Determine drive ID
+<pre>
+fdisk -l
+</pre>
+Documentation from here on assumes /dev/sda (substitute as necessary)
 
+### Create partitions
+<pre>
+fdisk /dev/sda
+</pre>
 
-# fdisk /dev/the_disk_to_be_partitioned
-# fdisk /dev/sda   <--- assumption
-
-
-Create
+Create the following within fdisk
+<pre>
 /mnt/boot  /dev/sda1   EFI System partition (fdisk type "ef")  1 GB  
 [SWAP]     /dev/sda2   Linux Swap  (fdisk type "82")  16 GB
 /mnt       /dev/sda3   Linux x86-64 root (/)  Remainder of device
+</pre>
 
-Make the boot partition bootable.
+* Make the boot partition bootable.
+* write the partition (w) and exit fdisk
 
-write the partition (w)
-
-Make File Systems
+### Make the file systems
 
 mkfs.fat -F 32 /dev/sda1
 mkswap /dev/sda2
