@@ -60,17 +60,18 @@ Create the following within fdisk
 * write the partition (w) and exit fdisk
 
 ### Make the file systems
-
+<pre>
 mkfs.fat -F 32 /dev/sda1
 mkswap /dev/sda2
 mkfs.ext4 /dev/sda3
+</pre>
 
-mount volumes
-
-# mount --mkdir /dev/sda1 /mnt/boot
+### Mount volumes
+</pre>
+mount --mkdir /dev/sda1 /mnt/boot
 swapon /dev/sda2
-# mount /dev/sda3 /mnt
-
+mount /dev/sda3 /mnt
+</pre>
 
 # pacstrap -K /mnt base linux linux-firmware nano networkmanager 
 
