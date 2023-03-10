@@ -2,11 +2,10 @@
 title: Arch Installation
 tags: 
  - pxe
- - github
+ - arch
 description: Basic Arch OS configuration
 ---
-# PXE Booting lab OS image deployment system
-An early work in progress and essentially a collection of progress notes
+# Building a basic CLI Arch install as a base for the PXE server.
 Bridge the VM Net
 
 
