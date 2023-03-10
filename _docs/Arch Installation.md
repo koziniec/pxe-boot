@@ -12,9 +12,9 @@ Bridge the VM Net
 ## Install Arch
 Verify the boot mode
 To verify the boot mode, list the efivars directory:
-
-# ls /sys/firmware/efi/efivars
-
+<pre>
+ls /sys/firmware/efi/efivars
+</pre>
 
 
 
