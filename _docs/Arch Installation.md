@@ -27,11 +27,10 @@ Ensure your network interface is listed and enabled, for example with ip-link(8)
 ip link
 </pre>
 
-
-
-get address
-**dhcpcd
-
+### Obtain an IP address
+<pre>
+dhcpcd
+</pre>
 
 Use timedatectl(1) to ensure the system clock is accurate:
 # timedatectl status
