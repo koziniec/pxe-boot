@@ -9,7 +9,8 @@ description: Basic Arch OS configuration
 * Download Arch ISO
 * Create VM
 * Allocate a volume with enough space to hold several images
-* Bridge the VM Net
+* Bridge a network interface to the host's LAN
+* Create a second network interface in the intnet network
 * Enable EFI boot
 
 Boot into Arch installation media
