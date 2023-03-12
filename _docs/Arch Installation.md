@@ -79,7 +79,7 @@ mount /dev/sda3 /mnt
 
 ## Install Arch
 <pre>
-pacstrap -K /mnt base base-devel linux linux-firmware nano networkmanager 
+pacstrap -K /mnt base base-devel linux linux-firmware nano networkmanager sudo
 </pre>
 
 ## Set hostname
@@ -165,6 +165,25 @@ grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 </pre>
 
+## Enable the Netwrok Manager
+systemctl enable NetworkManager.service
+
+## Finishing up
+Now exit from chroot using the exit command:
+
+<pre>
+exit
+</pre>
+
+Finally, unmount the root partition using the following command:
+<pre>
+umount -l /mnt
+</pre>
+
+And then shut down your system
+<pre>
+shutdown now
+</pre>
 
 
 - DOCUMENT whatever this is and how to rebuild and configure it.
