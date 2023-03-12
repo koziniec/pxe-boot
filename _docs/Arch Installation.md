@@ -145,7 +145,7 @@ nano /etc/locale.conf
 </pre>
 LANG=en_AU.UTF-8
 
-##Set root password
+## Set root password
 <pre>
 passwd  
 (old hp password from research room)
