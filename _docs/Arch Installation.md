@@ -79,7 +79,7 @@ mount /dev/sda3 /mnt
 
 ## Install Arch
 <pre>
-pacstrap -K /mnt base linux linux-firmware nano networkmanager 
+pacstrap -K /mnt base base-devel linux linux-firmware nano networkmanager 
 </pre>
 
 ## Set hostname
