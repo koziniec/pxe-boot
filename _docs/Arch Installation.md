@@ -34,6 +34,8 @@ dhcpcd
 
 Assuming the bridged interface to the physical LAN provides DHCP, you should obtain a DHCP lease on that interface.  Take note of the interface name. In these documents we assume enp0s3 is bridged to the physical LAN and enp0s8 services the internal LAN.
 
+_Need documentation here to manually configuring an IP address and default route for the situation where DHCP is not provided on the local LAN_
+
 ## Check clock
 <pre>
 # timedatectl status
