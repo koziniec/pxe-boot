@@ -208,6 +208,11 @@ And then shut down your system
 shutdown now
 </pre>
 
+MIGHT NEED EXPLANTION OF STARTING NetworkManager SERVICE
+SECTION ON ADDRESSING THE INTERNAL  INTERFACE
+
+
+
 
 - DOCUMENT whatever this is and how to rebuild and configure it.
     - Seriously without documentation, in time any functionality will turn to rust.
