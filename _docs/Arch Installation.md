@@ -138,12 +138,11 @@ en_AU.UTF-8 UTF-8
 ## Generate the locales
 <pre>
 locale-gen
-</pre>
-
-<pre>
 nano /etc/locale.conf
 </pre>
+<pre>
 LANG=en_AU.UTF-8
+</pre>
 
 ## Set root password
 <pre>
@@ -167,6 +166,30 @@ grub-mkconfig -o /boot/grub/grub.cfg
 
 ## Enable the Netwrok Manager
 systemctl enable NetworkManager.service
+
+## Create a non root user
+Now create a new user and give permissions. In my case, ‘koziniec’ is the new username I chose.
+<pre>
+useradd -m koziniec
+passwd koziniec
+</pre>
+
+Now, you will be adding this user to a group of users that grants specific permissions. This should be self-explanatory, while the wheel group is needed for a user act as the super user.
+<pre>
+usermod -aG wheel,audio,video,storage koziniec
+</pre>
+
+Finally, you need to edit the visudo file, specifically the line referring to wheel should be uncommented.
+
+It opens in VI editor by default. So we need to force it use nano:
+
+<pre>
+EDITOR=nano visudo
+</pre>
+
+Edit visudo to uncomment the line referring to wheel (towards bottom).
+
+Save the changes and exit from this file.
 
 ## Finishing up
 Now exit from chroot using the exit command:
