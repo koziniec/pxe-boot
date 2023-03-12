@@ -57,7 +57,7 @@ Create the following partitions within fdisk:
 <pre>
 /mnt/boot  /dev/sda1   EFI System partition (fdisk type "ef")  1 GB  
 [SWAP]     /dev/sda2   Linux Swap  (fdisk type "82")  16 GB
-/mnt       /dev/sda3   Linux x86-64 root (/)  Remainder of device
+/mnt       /dev/sda3   Linux x86-64 root (/) (fdisk type "83") Remainder of device
 </pre>
 
 * Make the boot partition bootable.
