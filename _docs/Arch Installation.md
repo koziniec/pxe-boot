@@ -88,19 +88,13 @@ nano /etc/hostname
 schit-lab-deploy
 </pre>
 
-## Revert networks to traditional interface names
-If you would prefer to retain traditional interface names such as eth0, Predictable Network Interface Names can be disabled by masking the udev rule:**
-<pre>
-ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
-</pre>
 
+_CONSIDER DOING THIS AS AN OPTIMISATION_
+_Set device MTU and queue length_
+_You can change the device MTU and queue length by defining manually with an udev-rule. For example:_
 
-CONSIDER DOING THIS AS AN OPTIMISATION
-Set device MTU and queue length
-You can change the device MTU and queue length by defining manually with an udev-rule. For example:
-
-/etc/udev/rules.d/10-network.rules
-ACTION=="add", SUBSYSTEM=="net", KERNEL=="wl*", ATTR{mtu}="1500", ATTR{tx_queue_len}="2000"
+_/etc/udev/rules.d/10-network.rules_
+_ACTION=="add", SUBSYSTEM=="net", KERNEL=="wl*", ATTR{mtu}="1500", ATTR{tx_queue_len}="2000"_
 
 ## Create hosts file
 <pre>
