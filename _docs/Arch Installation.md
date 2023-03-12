@@ -32,6 +32,8 @@ ip link
 dhcpcd
 </pre>
 
+Assuming the bridged interface to the physical LAN provides DHCP, you should obtain a DHCP lease on that interface.  Take note of the interface name. In these documents we assume enp0s3 is bridged to the physical LAN and enp0s8 services the internal LAN.
+
 ## Check clock
 <pre>
 # timedatectl status
